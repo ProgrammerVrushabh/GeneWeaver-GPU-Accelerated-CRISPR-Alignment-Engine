@@ -400,7 +400,7 @@ Contributions, suggestions, and improvements are welcome!
 
 ## 📜 License
 
-This project is intended to be distributed under the GNULicense. See the `LICENSE` file for details.
+This project is intended to be distributed under the GNU License. See the `LICENSE` file for details.
 
 ---
 
