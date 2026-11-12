@@ -166,7 +166,144 @@ Processes and organizes the detected candidate off-target locations.
 - Number and positions of mismatches.
 - PAM sequence information.
 - Alignment score.
+## ⚙️ Installation & Setup
 
+### Prerequisites
+
+Before running GeneWeaver, ensure that you have:
+
+- Python 3.10 or later.
+- An NVIDIA GPU with CUDA support.
+- Compatible NVIDIA GPU drivers.
+- A compatible CUDA Toolkit and Numba CUDA environment.
+- Git installed on your system.
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/ProgrammerVrushabh/GeneWeaver.git
+
+cd GeneWeaver
+```
+
+### Step 2: Create a Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+Activate it:
+
+**Windows:**
+```bash
+venv\Scripts\activate
+```
+
+**Linux/macOS:**
+```bash
+source venv/bin/activate
+```
+
+### Step 3: Install Dependencies
+
+```bash
+pip install biopython numpy numba dask distributed textual
+```
+
+### Step 4: Verify GPU Availability
+
+```python
+from numba import cuda
+
+print("CUDA Available:", cuda.is_available())
+
+if cuda.is_available():
+    print("GPU:", cuda.get_current_device().name)
+```
+
+### Step 5: Run GeneWeaver
+
+```bash
+python main.py --input data/input/sample.fasta
+```
+
+*Note: The command-line interface and module paths represent the planned project structure and should be updated to match the implemented version.*
+
+## ▶️ How to Run the Program
+
+Follow these steps to execute GeneWeaver on your system.
+
+### Step 1: Open the Project Directory
+
+Open a terminal or command prompt and navigate to the GeneWeaver project folder:
+
+```bash
+cd GeneWeaver
+```
+
+### Step 2: Activate the Virtual Environment
+
+If you created the virtual environment during installation, activate it.
+
+**Windows:**
+```bash
+venv\Scripts\activate
+```
+
+**Linux/macOS:**
+```bash
+source venv/bin/activate
+```
+
+### Step 3: Install the Required Libraries
+
+Install the project dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+If a `requirements.txt` file is not available yet, install the listed packages manually:
+
+```bash
+pip install biopython numpy numba dask distributed textual
+```
+
+### Step 4: Prepare the Input FASTA File
+
+Place your reference genomic sequence file in the input directory:
+
+```text
+data/
+└── input/
+    └── sample.fasta
+```
+
+You can replace `sample.fasta` with your own FASTA file. Make sure the file contains valid DNA sequences.
+
+### Step 5: Check GPU Availability
+
+Run this command to verify that Numba can detect a CUDA-compatible NVIDIA GPU:
+
+```bash
+python -c "from numba import cuda; print('CUDA Available:', cuda.is_available())"
+```
+
+If CUDA is available, the program should be able to access the compatible GPU. GPU execution also requires compatible NVIDIA drivers and CUDA support.
+
+### Step 6: Run GeneWeaver
+
+Start the program using the main Python file:
+
+```bash
+python main.py --input data/input/sample.fasta
+```
+
+To provide a guide sequence, PAM pattern, and maximum mismatch limit, use:
+
+```bash
+python main.py --input data/input/sample.fasta --guide GAGTCCGAGCAGAAGAAGAA --pam NGG --mismatches 3
+```
 ## 🛠️ Technology Stack
 
 | Technology | Purpose |
